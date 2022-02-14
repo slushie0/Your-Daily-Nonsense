@@ -1,0 +1,142 @@
+@font-face{
+    font-family: Bahnschrift;
+    src: local('./Bahnschrift Regular.ttf'), url('./Bahnschrift Regular.ttf') format('ttf');
+}
+@keyframes animate_page {
+    from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0px);}
+}
+*{
+    /*--main-color:rgb(32, 199, 146);*/
+    --main-color:rgb(40, 186, 222);
+    --sub-color:rgba(220, 220, 220);
+}
+body {
+    margin: 0;
+    color: var(--sub-color);
+    background-image: url('./bg-img.jpg');
+    font-family: "Google Sans";
+}
+.scene {
+    margin: 0 20%;
+    animation: 1s animate_page forwards;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Navbar CSS */
+nav {
+    font-family: "Comfortaa";
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+nav a {
+    padding: 0 15px 6px;
+    letter-spacing: 0.15em;
+    position: relative;
+    text-decoration: none;
+    color: var(--sub-color) !important;
+}
+nav a:not(.active):after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: var(--sub-color);
+    transition: width 0.4s ease 0s, left 0.4s ease 0s;
+    width: 0;
+}
+nav a:hover:after {
+    width: 80%; 
+    left: 10%; 
+}
+nav a.active {
+    color: var(--main-color) !important;
+    border-bottom: 2px solid var(--main-color) !important;
+}
+.drop {
+    margin-top: -10px;
+    padding-bottom: 5px;
+}
+.drop i {
+    position: relative;
+    top: 6px;
+}
+
+/* Dropdown CSS */
+.dropdn {
+    position: relative;
+    display: none;
+    
+}
+.dropcon {
+    position: absolute;
+    top: 30px;
+    left: -125px;
+    border: 1px solid var(--sub-color);
+    border-left: 2px solid var(--main-color);
+    width: 150px;
+    padding: 2px 0 0 2px;
+}
+
+.main {
+    text-align: center;
+    font-family: "Bahnschrift", sans-serif !important;
+    color: var(--sub-color) !important;
+    
+}
+.main h1 {
+    font-weight: bolder !important;
+}
+#logo {
+    z-index: 2;
+    height: 60vh;
+    width: auto;
+}
+p {
+    font: 22px 'Roboto', sans-serif;
+}
+h1, h2 {
+    font-family: "Google Sans" sans-serif;
+    font-weight: 1;
+}
+li {
+    font-size: 20px;
+}
+a {
+    text-decoration: none;
+    color: var(--main-color)
+}
+video {
+    z-index: 10;
+}
+.card {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    border: 1px solid var(--main-color);
+    padding: 0 20px 20px 40px;
+    margin-bottom: 40px;
+}
+.card .title {
+    font-family: "Comfortaa" !important;
+}
+.card .content {
+    font-family: "Google Sans" !important;
+}
+.card .release {
+    position: absolute;
+    right: 0;
+}
+.rating {
+    color: yellow;
+}

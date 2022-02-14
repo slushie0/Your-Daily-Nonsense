@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Daily Nonsense</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Comfortaa|Roboto|Google+Sans:500,400" rel="stylesheet">
+    <link href="./Bahnschrift Regular.ttf" rel="font/ttf" type="font/ttf">
+</head>
+<body>
+    <nav>
+        <a href='#' onclick="goto(0);" class='active'>Home</a>
+        <a href='#' onclick="goto(1);">About</a>
+        <a href='#' onclick="goto(2);">Podcasts</a>
+        <a href='#' onclick="goto(3);">Reviews</a>
+        <a href='#' onclick="goto(4);">More</a>
+    </nav>
+    <div class="scene main">
+        <img src='./assets/bird.jpg' class='center' id='logo'>
+        <h1>Your Daily Nonsense</h1>
+    </div>
+    <div class="scene">
+        <h1>About.<h1>
+        <p>Your Daily Nonsense is a podcast run by Paxton and Eric. They make podcasts on entertaining topics, current events, and stories. They are currently located on 123 Sesame St.</p>
+        <h2>Contact.</h2>
+        <p>Have ideas for podcast topics, or questions? Contact Your Daily Nonsense here:</p>
+        <ul>
+            <li>Twitter: <a href='#'>@YourDailyNonsense</a></li>
+            <li>Instagram: <a href='#'>@YourDailyNonsense</a></li>
+            <li>Email: <a href='#'>contact@mail.yourdailynonsense.com</a></li>
+            <li>Discord: <a href='#'>YourDailyNonsense#1234</a></li>
+        </ul>
+    </div>
+    <div class="scene">
+        <h1>Podcasts.<h1>
+        <p>Listen to some of our work!</p>
+        <div class='card'>
+            <p class='title'>Rick Astley</p>
+            <p class='content'>Never Gonna Give You Up</p>
+            <p>3:32<span class='release'>Oct 24, 2009</span></p>
+        </div>
+    </div>
+    <div class="scene">
+        <h1>Reviews.<h1>
+        <div id="rev-con"></div>
+    </div>
+    <div class="scene">
+        <p>Watch this short video to find out how we make our podcasts!</p>
+        <video class='center' id='vid' width="600" height="auto" controls>
+            <source src="assets/movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src='assets/jquery.min.js'></script>
+    <script>
+
+var scenes = $('.scene');
+var navs = $('nav').children();
+var revCon = $('#rev-con');
+
+function goto(scene) {
+    for (var i = 0; i < scenes.length; i++) {
+        $(scenes[i]).css('display', 'none');
+        $(navs).removeClass('active');
+    }
+    $(scenes[scene]).css('display', 'block');
+    $(navs[scene]).addClass('active');
+};
+goto(0);
+
+function rand(min, max) {
+   let randomNum = Math.random() * (max - min) + min;
+   return Math.floor(randomNum);
+}
+
+var usernames = [
+    "Joe Mama",
+    "Jeff09",
+    "Phillis",
+    "Hooman",
+    "HamburgerTime"
+];
+
+var posts = [
+    "Great Quality! Awesome for long car rides or plane flights.",
+    "Incredible content, it's my favorite podcast!",
+    "Perfect for all ages, and very engaging!",
+    "Eh. I've seen better.",
+    "My favorite!",
+    "Too many ads, but other than that it's great!",
+    "Five stars!"
+];
+
+for (var i = 0; i < 5; i++) {
+    var author = $('<p></p>');
+    author.text(usernames[rand(0, usernames.length-1)]);
+    author.addClass('title');
+    var content = $('<p></p>');
+    content.text(posts[rand(0, posts.length-1)]);
+    content.addClass('content');
+    var rating = $('<i></i>');
+    rating.addClass('material-icons');
+    rating.addClass('rating');
+    for (var j = 0; j < 5; j++) {
+        if (j < 4) {
+            rating.append('star ');
+        } else {
+            var rate = rand(0, 3);
+            switch (rate) {
+                case 0:
+                    rating.append('star');
+                    break;
+                case 1:
+                    rating.append('star_half');
+                    break;
+                case 2:
+                    rating.append('star_border');
+                    break;
+            }
+        }
+    }
+
+    var card = $('<div></div>');
+    card.addClass('card');
+    card.append(author);
+    card.append(content);
+    card.append(rating);
+    revCon.append(card);
+}
+
+    </script>
+</body>
+</html>
